@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import Users
+from accounts.models import CustomUser
 from categories.models import Categories
 
 class News(models.Model):
@@ -12,6 +12,6 @@ class News(models.Model):
 
 class Comments(models.Model):
     text        = models.TextField("Comment text", null=False)
-    sended_from = models.ForeignKey(Users , on_delete = models.CASCADE)
+    sended_from = models.ForeignKey(CustomUser , on_delete = models.CASCADE)
     news        = models.ForeignKey(News , on_delete = models.CASCADE)
     time        = models.DateTimeField("Date/time", auto_now_add=True)

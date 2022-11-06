@@ -1,6 +1,7 @@
 from email.policy import default
+from enum import unique
 from django.db import models
-from accounts.models import Users
+from accounts.models import CustomUser
 from categories.models import Categories
 
 class Topics(models.Model):
@@ -13,18 +14,17 @@ class Topics(models.Model):
 
 class Messages(models.Model):
     text        = models.TextField("Comment text", null=False)
-    sended_from = models.ForeignKey(Users, on_delete = models.CASCADE)
+    sended_from = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
     topic       = models.ForeignKey(Topics, on_delete = models.CASCADE)
     time        = models.DateTimeField("Date/time", auto_now_add=True)
 
 class Replies(models.Model):
     text        = models.TextField("Comment text", null=False)
-    sended_from = models.ForeignKey(Users, on_delete = models.CASCADE)
-    topic       = models.ForeignKey(Topics, on_delete = models.CASCADE)
+    sended_from = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
     time        = models.DateTimeField("Date/time", auto_now_add=True)
     reply_to    = models.ForeignKey(Messages, on_delete = models.CASCADE)
 
 class Sended_to(models.Model):
-    message     = models.ForeignKey(Messages, on_delete = models.CASCADE)
-    user        = models.ForeignKey(Users, on_delete = models.CASCADE)
-    is_read     = models.BooleanField(null=False, default=False)
+    message_reply   = models.ForeignKey(Replies, on_delete = models.CASCADE, unique=True)
+    user            = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
+    is_read         = models.BooleanField(null=False, default=False)
