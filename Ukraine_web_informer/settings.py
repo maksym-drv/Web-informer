@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-k0rfp@9a)ro1z$-jbs!h=ah*ydo@l2r5ni65iyf@fuor%30u62'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
 
 
 # Application definition
@@ -79,12 +80,12 @@ WSGI_APPLICATION = 'Ukraine_web_informer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'web_informer_db', 
-        'USER': 'web_informer_admin', 
-        'PASSWORD': 'uJ%p{g%LK5V}#/h93T6{e50;K#inH]4[8xk$EJ4^1jQZ#p4l3z)w]nIDqE<[9U1Yla1#10',
-        'HOST': '127.0.0.1', 
-        'PORT': '5432',
+        'ENGINE': os.environ.get('ENGINE'),
+        'NAME': os.environ.get('NAME'), 
+        'USER': os.environ.get('USER'), 
+        'PASSWORD': os.environ.get('PASS'),
+        'HOST': os.environ.get('HOST'), 
+        'PORT': os.environ.get('PORT'),
     }
 }
 
@@ -124,6 +125,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# STATICFILES_DIRS = [
+#     BASE_DIR / "forum/templates/assets"
+# ]
+
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

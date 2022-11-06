@@ -25,6 +25,6 @@ class Replies(models.Model):
     reply_to    = models.ForeignKey(Messages, on_delete = models.CASCADE)
 
 class Sended_to(models.Model):
-    message_reply   = models.ForeignKey(Replies, on_delete = models.CASCADE, unique=True)
+    message_reply   = models.ForeignKey(Replies, on_delete = models.CASCADE)
     user            = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
     is_read         = models.BooleanField(null=False, default=False)
