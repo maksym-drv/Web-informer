@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="./assets/images/favicon.png">
+  <title>Форум</title>
+
+  <link rel="stylesheet" href="./assets/css/reboot.min.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css?v1.1.1">
+
+  <!--[if lt IE 10]>
+  <div style="text-align: center;padding: 20px;background:red;color:#fff;">Вы используете <strong>устаревший</strong> браузер. <br>
+  Пожалуйста, <a href="http://browsehappy.com/">обновите его</a> для корректного
+  отображения сайтов.</div>
+  <![endif]-->
+
+</head>
+
+<body id="body">
+  <!-- .wrapper -->
+  <div class="wrapper">
+
+    <!-- .header -->
+    <header class="header">
+      <div class="header__inner">
+        <!-- .header__box -->
+        <div class="header__box">
+          <!-- .logo -->
+          <a href="index.html" class="logo">
+            <img src="./assets/images/logo.svg" alt="logo" class="logo__img">
+          </a><!-- /.logo -->
+          <!-- .nav -->
+          <nav id="nav" class="nav">
+            <ul>
+              <li><a href="news.html" class="nav__link">Новости</a></li>
+              <li><a href="aso.html" class="nav__link">ASO-оптимизация</a></li>
+              <li><a href="about.html" class="nav__link">О нас</a></li>
+              <li><a href="forum.html" class="nav__link">Форум</a></li>
+              <li><a href="curses.html" class="nav__link">Обучение</a></li>
+              <li><a href="slovar.html" class="nav__link">Словарь</a></li>
+              <li><a href="sell.html" class="nav__link">Продажа аккаунтов</a></li>
+              <li><a href="#" class="button">Наш чат в Telegram</a></li>
+              <li><a href="#" class="nav__link hidden__desktop">Войти</a></li>
+            </ul>
+          </nav><!-- /.nav -->
+        </div><!-- /.header__box -->
+        <!-- .header__box -->
+        <div class="header__box">
+          <!-- .ding -->
+          <div id="ding" class="ding dropdown">
+            <button class="ding__toogle dropdown-toggle" type="button" id="dropdownMenu__ding" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="ding__icon" src="./assets/images/bell.svg" alt="Уведомление">
+              <span class="ding__info">5</span>
+            </button>
+            <!-- .ding__box -->
+            <div class="dropdown-menu ding__box" aria-labelledby="dropdownMenu__ding">
+              <span class="ding__arrow"></span>
+              <!-- .ding__content -->
+              <div class="ding__content">
+                <!-- .dingList -->
+                <div class="dingList">
+                  <div class="dingList__title">Сегодня</div>
+                  <div class="dingList__item">
+                    <img class="dingList__item__icon" src="./assets/images/message.svg" alt="Сообщение">
+                    <p class="dingList__item__desc">
+                      <a href="#">Вам ответили на форуме *название* <span>20 мин</span></a>
+                    </p>
+                  </div>
+                  <div class="dingList__item">
+                    <img class="dingList__item__icon" src="./assets/images/message.svg" alt="Сообщение">
+                    <p class="dingList__item__desc">
+                      <a href="#">У вас новое сообщение в топике *название* <span>27 мин</span></a>
+                    </p>
+                  </div>
+                </div>
+                <!-- /.dingList -->
+                <!-- .dingList -->
+                <div class="dingList dingList__viewed">
+                  <div class="dingList__title">Вчера</div>
+                  <div class="dingList__item">
+                    <img class="dingList__item__icon" src="./assets/images/message.svg" alt="Сообщение">
+                    <p class="dingList__item__desc">
+                      <a href="#">У вас новое сообщение в топике *название* <span>27 мин</span></a>
+                    </p>
+                  </div>
+                  <div class="dingList__item">
+                    <img class="dingList__item__icon" src="./assets/images/message.svg" alt="Сообщение">
+                    <p class="dingList__item__desc">
+                      <a href="#">У вас новое сообщение в топике *название* <span>27 мин</span></a>
+                    </p>
+                  </div>
+                </div>
+                <!-- /.dingList -->
+              </div><!-- /.ding__content -->
+            </div><!-- /.ding__box -->
+          </div><!-- /.ding -->
+          <a href="#" class="nav__link hidden__mobile">Login</a>
+          <!-- .nav__open -->
+          <button id="nav__open" type="button" class="navToggle">
+            <span class="navToggle__inner">
+              <i></i>
+              <i></i>
+              <i></i>
+            </span>
+          </button><!-- /.nav__open -->
+
+        </div><!-- /.header__box -->
+      </div>
+    </header><!-- .header -->
+
+    <!-- .main -->
+    <div class="main">
+      <div class="container container__lg">
+
+        <!-- .forum -->
+        <div class="forum">
+
+          <!-- .forumBreadcrumb -->
+          <div class="forumBreadcrumb">
+            Forums / <a href="#">Main category</a>
+          </div><!-- /.forumBreadcrumb -->
+
+
+          <!-- .forumItem -->
+          <div class="forumItem">
+            <span class="forumItem__icon">
+              <img src="./assets/images/message.svg" alt="#">
+            </span>
+            <div class="forumItem__desc">
+              <div class="forumItem__desc__name"><a href="forum-post.html">Main forum</a></div>
+            </div>
+            <div class="forumItem__counters">
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">6</span>
+                <span class="forumItem__counter__name">Threads</span>
+              </div>
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">45</span>
+                <span class="forumItem__counter__name">Messages</span>
+              </div>
+            </div>
+            <div class="forumItem__user">
+              <span class="forumItem__user__ava">
+                <img src="./img/ava-1.png" alt="#">
+              </span>
+              <div>
+                <span class="forumItem__user__title"><a href="#">How to be successful!</a></span>
+                <span class="forumItem__user__info">Dec 19, 2018 • Homer Simpson</span>
+              </div>
+            </div>
+          </div><!-- /.forumItem -->
+          <!-- .forumItem -->
+          <div class="forumItem">
+            <span class="forumItem__icon">
+              <img src="./assets/images/lock.svg" alt="#">
+            </span>
+            <div class="forumItem__desc">
+              <div class="forumItem__desc__name"><a href="#!" data-bs-toggle="modal" data-bs-target="#modalError">Another forum</a></div>
+              <div class="forumItem__desc__text">This is another forum, with some bold text in the description!</div>
+            </div>
+            <div class="forumItem__counters">
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">6</span>
+                <span class="forumItem__counter__name">Threads</span>
+              </div>
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">45</span>
+                <span class="forumItem__counter__name">Messages</span>
+              </div>
+            </div>
+            <div class="forumItem__user">
+              <span class="forumItem__user__ava">
+                <img src="./img/ava-2.png" alt="#">
+              </span>
+              <div>
+                <span class="forumItem__user__title"><a href="#">How to be successful!</a></span>
+                <span class="forumItem__user__info">Dec 19, 2018 • Homer Simpson</span>
+              </div>
+            </div>
+          </div><!-- /.forumItem -->
+          <!-- .forumItem -->
+          <div class="forumItem">
+            <span class="forumItem__icon">
+              <img src="./assets/images/message.svg" alt="#">
+            </span>
+            <div class="forumItem__desc">
+              <div class="forumItem__desc__name"><a href="forum-post.html">Customer testimonials</a></div>
+              <div class="forumItem__desc__text">This forum is filled with testimonials from xenfocus customers.</div>
+            </div>
+            <div class="forumItem__counters">
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">6</span>
+                <span class="forumItem__counter__name">Threads</span>
+              </div>
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">45</span>
+                <span class="forumItem__counter__name">Messages</span>
+              </div>
+            </div>
+            <div class="forumItem__user">
+              <span class="forumItem__user__ava">
+                <img src="./img/ava-3.png" alt="#">
+              </span>
+              <div>
+                <span class="forumItem__user__title"><a href="#">How to be successful!</a></span>
+                <span class="forumItem__user__info">Dec 19, 2018 • Homer Simpson</span>
+              </div>
+            </div>
+          </div><!-- /.forumItem -->
+          <!-- .forumItem -->
+          <div class="forumItem">
+            <span class="forumItem__icon">
+              <img src="./assets/images/message.svg" alt="#">
+            </span>
+            <div class="forumItem__desc">
+              <div class="forumItem__desc__name"><a href="forum-post.html">Frequently Asked Questions</a></div>
+            </div>
+            <div class="forumItem__counters">
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">6</span>
+                <span class="forumItem__counter__name">Threads</span>
+              </div>
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">45</span>
+                <span class="forumItem__counter__name">Messages</span>
+              </div>
+            </div>
+            <div class="forumItem__user">
+              <span class="forumItem__user__ava">
+                <img src="./img/ava-1.png" alt="#">
+              </span>
+              <div>
+                <span class="forumItem__user__title"><a href="#">How to be successful!</a></span>
+                <span class="forumItem__user__info">Dec 19, 2018 • Homer Simpson</span>
+              </div>
+            </div>
+          </div><!-- /.forumItem -->
+          <!-- .forumItem -->
+          <div class="forumItem">
+            <span class="forumItem__icon">
+              <img src="./assets/images/message.svg" alt="#">
+            </span>
+            <div class="forumItem__desc">
+              <div class="forumItem__desc__name"><a href="forum-post.html">Main forum</a></div>
+            </div>
+            <div class="forumItem__counters">
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">6</span>
+                <span class="forumItem__counter__name">Threads</span>
+              </div>
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">45</span>
+                <span class="forumItem__counter__name">Messages</span>
+              </div>
+            </div>
+            <div class="forumItem__user">
+              <span class="forumItem__user__ava">
+                <img src="./img/ava-1.png" alt="#">
+              </span>
+              <div>
+                <span class="forumItem__user__title"><a href="#">How to be successful!</a></span>
+                <span class="forumItem__user__info">Dec 19, 2018 • Homer Simpson</span>
+              </div>
+            </div>
+          </div><!-- /.forumItem -->
+          <!-- .forumItem -->
+          <div class="forumItem">
+            <span class="forumItem__icon">
+              <img src="./assets/images/lock.svg" alt="#">
+            </span>
+            <div class="forumItem__desc">
+              <div class="forumItem__desc__name"><a href="#!" data-bs-toggle="modal" data-bs-target="#modalError">Another forum</a></div>
+              <div class="forumItem__desc__text">This is another forum, with some bold text in the description!</div>
+            </div>
+            <div class="forumItem__counters">
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">6</span>
+                <span class="forumItem__counter__name">Threads</span>
+              </div>
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">45</span>
+                <span class="forumItem__counter__name">Messages</span>
+              </div>
+            </div>
+            <div class="forumItem__user">
+              <span class="forumItem__user__ava">
+                <img src="./img/ava-2.png" alt="#">
+              </span>
+              <div>
+                <span class="forumItem__user__title"><a href="#">How to be successful!</a></span>
+                <span class="forumItem__user__info">Dec 19, 2018 • Homer Simpson</span>
+              </div>
+            </div>
+          </div><!-- /.forumItem -->
+          <!-- .forumItem -->
+          <div class="forumItem">
+            <span class="forumItem__icon">
+              <img src="./assets/images/message.svg" alt="#">
+            </span>
+            <div class="forumItem__desc">
+              <div class="forumItem__desc__name"><a href="forum-post.html">Customer testimonials</a></div>
+              <div class="forumItem__desc__text">This forum is filled with testimonials from xenfocus customers.</div>
+            </div>
+            <div class="forumItem__counters">
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">6</span>
+                <span class="forumItem__counter__name">Threads</span>
+              </div>
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">45</span>
+                <span class="forumItem__counter__name">Messages</span>
+              </div>
+            </div>
+            <div class="forumItem__user">
+              <span class="forumItem__user__ava">
+                <img src="./img/ava-3.png" alt="#">
+              </span>
+              <div>
+                <span class="forumItem__user__title"><a href="#">How to be successful!</a></span>
+                <span class="forumItem__user__info">Dec 19, 2018 • Homer Simpson</span>
+              </div>
+            </div>
+          </div><!-- /.forumItem -->
+          <!-- .forumItem -->
+          <div class="forumItem">
+            <span class="forumItem__icon">
+              <img src="./assets/images/message.svg" alt="#">
+            </span>
+            <div class="forumItem__desc">
+              <div class="forumItem__desc__name"><a href="forum-post.html">Frequently Asked Questions</a></div>
+            </div>
+            <div class="forumItem__counters">
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">6</span>
+                <span class="forumItem__counter__name">Threads</span>
+              </div>
+              <div class="forumItem__counter">
+                <span class="forumItem__counter__number">45</span>
+                <span class="forumItem__counter__name">Messages</span>
+              </div>
+            </div>
+            <div class="forumItem__user">
+              <span class="forumItem__user__ava">
+                <img src="./img/ava-1.png" alt="#">
+              </span>
+              <div>
+                <span class="forumItem__user__title"><a href="#">How to be successful!</a></span>
+                <span class="forumItem__user__info">Dec 19, 2018 • Homer Simpson</span>
+              </div>
+            </div>
+          </div><!-- /.forumItem -->
+        </div><!-- /.forum -->
+
+        <!-- modalZakaz -->
+        <div class="modal fade" id="modalError" tabindex="-1" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="modal-title">Доступ ограничен</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Доступ к этому материалу ограничен, для доступа напишите <a href="https://t.me/dnnma" target="_blank">@dnnma</a> в телеграм</p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /modalZakaz -->
+
+      </div>
+    </div><!-- /.main -->
+
+  </div>
+  <!-- .wrapper -->
+
+  <script src="./assets/js/jquery-3.6.0.min.js"></script>
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
