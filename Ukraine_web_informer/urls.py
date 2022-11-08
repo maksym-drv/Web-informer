@@ -22,7 +22,8 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('news/', include('news.urls'), name='news'),
+    path('forum/', include('forum.urls')),
+    path('news/', include('news.urls')),
 ]
 
 if settings.DEBUG:

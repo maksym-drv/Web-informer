@@ -61,7 +61,7 @@
       
       <div class="comments__title">Post a comment:</div>
 
-      {% if not is_authenticated %}
+      {% if not user.is_authenticated %}
       <div class="comments__guest">
         <p>You need logged in to write a comment</p>
         <a href="{% url 'login' %}" class="button">Login</a>

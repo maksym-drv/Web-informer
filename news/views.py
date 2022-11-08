@@ -8,7 +8,6 @@ class News(View):
     def get(self, request: WSGIRequest):
         context = {}
         context['news'] = models.News.objects.all()
-        context['is_authenticated'] = request.user.is_authenticated
         return render(request, 'news.html', context=context)
 
 class Post(View):
@@ -18,7 +17,6 @@ class Post(View):
 
         context['post'] = models.News.objects.filter(id = request.GET.get('news-post')).first()
         context['comments'] = models.Comment.objects.filter(news_id = request.GET.get('news-post'))
-        context['is_authenticated'] = request.user.is_authenticated
         return render(request, 'news-post.html', context=context)
 
     def post(self, request: WSGIRequest):
@@ -34,5 +32,4 @@ class Post(View):
 
         context['post'] = models.News.objects.filter(id = request.POST.get('news-post')).first()
         context['comments'] = models.Comment.objects.filter(news_id = request.POST.get('news-post'))
-        context['is_authenticated'] = request.user.is_authenticated
         return render(request, 'news-post.html', context=context)
