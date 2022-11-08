@@ -41,7 +41,14 @@
 
       <div class="commentsItem">
         <div class="commentsItem__panel">
-          <!--<span class="commentsItem__ava"><img src="img/ava.png" alt="#"></span>-->
+
+          {% if comment.sended_from.image %}
+          <span class="commentsItem__ava"><img src="{{ comment.sended_from.image.url }}" alt="#"></span>
+          {% else %}
+          <span class="commentsItem__ava"><img src="{% static 'images/defaultUser.png' %}" alt="#"></span>
+          {% endif %}
+
+
           <a href="mailto:{{ comment.sended_from.email }}"><b>{{ comment.sended_from.first_name }}</b></a>
           <span>{{ comment.time }}</span>
         </div>
