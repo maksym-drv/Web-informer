@@ -2,11 +2,13 @@
 
 {% block main %}
 
-  <h1>Sign up</h1>
+<div class="container">
+  <h3>Sign up</h3>
   <form method="post">
     {% csrf_token %}
     {{ form }}
-    <button type="submit">Sign up</button>
+    <input type="submit" value="Sign up">
   </form>
+</div>
 
 {% endblock %}

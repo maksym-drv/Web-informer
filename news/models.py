@@ -8,7 +8,13 @@ class News(models.Model):
     full_text   = models.TextField("Full-text", null=False)
     date        = models.DateTimeField("Date/time", auto_now_add=True)
     image       = models.ImageField("Image", null=False)
-    category    = models.ForeignKey(Categories, on_delete = models.CASCADE)
+    category    = models.ForeignKey(Categories, on_delete = models.CASCADE, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "News"
 
 class Comments(models.Model):
     text        = models.TextField("Comment text", null=False)

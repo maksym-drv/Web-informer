@@ -7,23 +7,23 @@
   <!-- .news -->
   <div class="news">
 
-    {% for _news in news %}
+    {% for data in news %}
     <!-- .newsItem -->
     <div class="newsItem">
       <div class="newsItem__inner">
         <div class="newsItem__imgbox">
-          <a href="news-post.html"><img src="./img/news.jpg" alt="Новости"></a>
+          <a href="news-post.html"><img src="{{ data.image.url }}" alt="News"></a>
         </div>
         <div class="newsItem__content">
           <div class="newsItem__title">
-            <a href="news-post.html">Apple сняла с продажи iPhone 12 Pro и XR</a>
+            <a href="news-post.html">{{ data.title }}</a>
           </div>
           <p class="newsItem__desc">
-            iPhone 12 Pro, 12 Pro Max и XR пропали с сайта онлайн-магазина Apple. Их сняли с продажи после
-            презентации новых моделей смартфона.
+            {{ data.pre_text }}
           </p>
           <div class="newsItem__info">
-            <a href="#">#apple</a> / 04.09.20
+            <!--<a href="#">#apple</a> / -->
+            {{ data.date|date }}
           </div>
         </div>
       </div>

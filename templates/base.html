@@ -32,7 +32,7 @@
           <!-- .nav -->
           <nav id="nav" class="nav">
             <ul>
-              <li><a href="news.html" class="nav__link">Новости</a></li>
+              <li><a href="{% url 'news' %}" class="nav__link">News</a></li>
               <li><a href="aso.html" class="nav__link">ASO-оптимизация</a></li>
               <li><a href="about.html" class="nav__link">О нас</a></li>
               <li><a href="forum.html" class="nav__link">Форум</a></li>
@@ -95,7 +95,7 @@
               </div><!-- /.ding__content -->
             </div><!-- /.ding__box -->
           </div><!-- /.ding -->
-          <a href="#" class="nav__link hidden__mobile">Login</a>
+          <a href="{% url 'login' %}" class="nav__link hidden__mobile">Login</a>
           <!-- .nav__open -->
           <button id="nav__open" type="button" class="navToggle">
             <span class="navToggle__inner">

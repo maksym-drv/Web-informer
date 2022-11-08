@@ -8,6 +8,7 @@ services:
     volumes:
       - .:/informer_app
       - static:/staticfiles/
+      - media:/mediafiles/
     expose:
       - 8000
     env_file:
@@ -26,6 +27,7 @@ services:
     build: ./nginx
     volumes:
       - static:/staticfiles/
+      - media:/mediafiles/
     ports:
       - 80:80
     depends_on:
@@ -33,3 +35,4 @@ services:
 volumes:
   postgres:
   static:
+  media:

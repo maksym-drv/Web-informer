@@ -2,11 +2,18 @@
 
 {% block main %}
 
-  <h1>Login</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Sign up</button>
-  </form>
+<div class="container">
+  <div class="form__account">
+    <h3>Login</h3>
+    <form method="post">
+
+      {% csrf_token %}
+      {{ form }}
+
+      <input type="submit" value="Login">
+      <a href="{% url 'signup' %}" class="button">Sign up</a>
+    </form>
+  </div>
+</div>
 
 {% endblock %}

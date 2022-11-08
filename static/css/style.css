@@ -2159,3 +2159,33 @@ p {
     padding-bottom: 128px
   }
 }
+
+input[type=text], [type=password], [type=email] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: black;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border-style: solid;
+}
+
+input[type=submit]:hover {
+  background-color: white;
+  color: black;
+}
+
+.form__account a {
+  margin: 0px 20px;
+}
