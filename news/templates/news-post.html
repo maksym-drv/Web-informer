@@ -16,8 +16,8 @@
 
     <!-- .newsAbs -->
     <!--<div class="newsAbs">
-      <a href="#" class="newsAbs__item"><img src="./assets/images/edit.svg" alt="Редактировать"></a>
-      <a href="#" class="newsAbs__item"><img src="./assets/images/share.svg" alt="Поделиться"></a>
+      <a href="#" class="newsAbs__item"><img src="./assets/images/edit.svg" alt="Edit"></a>
+      <a href="#" class="newsAbs__item"><img src="./assets/images/share.svg" alt="Share"></a>
     </div>-->
     <!-- /.newsAbs -->
 
@@ -47,7 +47,6 @@
           {% else %}
           <span class="commentsItem__ava"><img src="{% static 'images/defaultUser.png' %}" alt="#"></span>
           {% endif %}
-
 
           <a href="mailto:{{ comment.sended_from.email }}"><b>{{ comment.sended_from.first_name }}</b></a>
           <span>{{ comment.time }}</span>

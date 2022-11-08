@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+<div class="container container__lg">
+
+  <!-- .forum -->
+  <div class="forum">
+
+    <!-- .forumBreadcrumb -->
+    <div class="forumBreadcrumb">
+      Categories /
+    </div><!-- /.forumBreadcrumb -->
+
+    {% for category in categories %}
+
+    <!-- .forumItem -->
+    <div class="forumItem">
+      <span class="forumItem__icon">
+        <img src="{% static 'images/message.svg' %}" alt="#">
+      </span>
+      <div class="forumItem__desc">
+        <div class="forumItem__desc__name"><a href="{% url 'topics' %}?category={{ category.id }}">{{ category.name }}</a></div>
+        <div class="forumItem__desc__text">{{ category.description }}</div>
+      </div>
+      <div class="forumItem__counters">
+        <div class="forumItem__counter">
+          <span class="forumItem__counter__number">{{ category.topic_set.count }}</span>
+          <span class="forumItem__counter__name">Topics</span>
+        </div>
+      </div>
+    </div><!-- /.forumItem -->
+
+    {% endfor %}
+
+  </div><!-- /.forum -->
+</div>
+
+{% endblock %}

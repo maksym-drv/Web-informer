@@ -6,6 +6,8 @@ $('.navToggle').click(function () {
 // ding
 var ding = document.getElementById('ding');
 var body = document.getElementById("body");
+// var reply = document.getElementById("reply");
+// var share = document.getElementById("share");
 ding.addEventListener('show.bs.dropdown', function () {
   body.classList.add('dingActive');
 });
@@ -13,11 +15,7 @@ ding.addEventListener('hidden.bs.dropdown', function () {
   body.classList.remove('dingActive');
 });
 
-// modalZakaz
-var exampleModal = document.getElementById('modalZakaz')
-exampleModal.addEventListener('show.bs.modal', function (event) {
-  var button = event.relatedTarget
-  var recipient = button.getAttribute('data-bs-whatever')
-  var modalTitle = exampleModal.querySelector('.modal-title')
-  modalTitle.textContent = 'Оформить ' + '"' + recipient + '"'
-})
+function copyUrl(url, id) {
+  navigator.clipboard.writeText(url);
+  alert("Copied message #" + id + " url to clipboard");
+}

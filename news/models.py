@@ -1,6 +1,6 @@
 from django.db import models
 from accounts.models import CustomUser
-from categories.models import Categories
+from categories.models import Category
 
 class News(models.Model):
     title       = models.CharField("Title", max_length=70, null=False)
@@ -8,7 +8,7 @@ class News(models.Model):
     full_text   = models.TextField("Full-text", null=False)
     date        = models.DateTimeField("Date/time", auto_now_add=True)
     image       = models.ImageField("Image", null=False)
-    category    = models.ForeignKey(Categories, on_delete = models.CASCADE, null=True, blank=True)
+    category    = models.ForeignKey(Category, on_delete = models.CASCADE, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title

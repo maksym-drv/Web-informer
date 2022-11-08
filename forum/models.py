@@ -1,6 +1,6 @@
 from django.db import models
 from accounts.models import CustomUser
-from categories.models import Categories
+from categories.models import Category
 
 class Topic(models.Model):
     title       = models.CharField("Title", max_length=70, null=False)
@@ -8,7 +8,10 @@ class Topic(models.Model):
     text        = models.TextField("Full-text", null=False)
     date        = models.DateField("Date", auto_now_add=True)
     image       = models.ImageField("Image", null=False)
-    category    = models.ForeignKey(Categories, on_delete = models.CASCADE)
+    category    = models.ForeignKey(Category, on_delete = models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.title
 
 class Message(models.Model):
     text        = models.TextField("Comment text", null=False)

@@ -17,12 +17,12 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('forum/', include('forum.urls')),
+    path('categories/', include('categories.urls')),
     path('news/', include('news.urls')),
 ]
 

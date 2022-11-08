@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+<div class="container container__lg">
+
+  <!-- .forum -->
+  <div class="forum">
+
+    <!-- .backLink -->
+    <a href="forum.html" class="backLink">
+      <img src="{% static 'images/back.svg' %}" alt="Back">
+    </a><!-- /.backLink -->
+
+    <!-- .forumBreadcrumb -->
+    <div class="forumBreadcrumb">
+      <a href="{% url 'categories' %}">Categories</a> / <a href="{% url 'topics' %}?category={{ topic.category.id }}">{{ topic.category.name }}</a> / {{ topic.title }}
+    </div><!-- /.forumBreadcrumb -->
+
+    {% for message in messages %}
+
+    <!-- .forumPost -->
+    <div class="forumPost" id="{{ message.id }}">
+      <div class="forumPost__panel">
+        <div class="forumPost__panel__inner">
+
+          {% if message.sended_from.image %}
+          <span class="forumPost__ava"><img src="{{ message.sended_from.image.url }}" alt="#"></span>
+          {% else %}
+          <span class="forumPost__ava"><img src="{% static 'images/defaultUser.png' %}" alt="#"></span>
+          {% endif %}
+
+          <a href="mailto:{{ message.sended_from.email }}">{{ message.sended_from.first_name }}</a>
+        </div>
+        <div class="forumPost__panel__inner">
+          <span>{{ message.time }}</span>
+          <a onclick="copyUrl('{{ request.build_absolute_uri }}#{{ message.id }}', '{{ message.id }}')" href="#"><img src="{% static 'images/forum-share.svg' %}" alt="Share"></a>
+          <a href="#"><img src="{% static 'images/forum-reply.svg' %}" alt="Reply"></a>
+          <a href="#">#{{ message.id }}</a>
+        </div>
+      </div>
+      <div class="forumPost__content">
+        <p>{{ message.text }}</p>
+      </div>
+    </div><!-- /.forumPost -->
+
+      {% for reply in message.reply_set.get %}
+      <!-- .forumPost__tree -->
+      <div class="forumPost forumPost__tree">
+        <div class="forumPost__panel">
+          <div class="forumPost__panel__inner">
+            <span class="forumPost__ava"><img src="img/ava-1.png" alt="#"></span>
+            <a href="#">@riffdick</a>
+          </div>
+          <div class="forumPost__panel__inner">
+            <span>{{ reply.time }}</span>
+            <a id="share" href=""><img src="./assets/images/forum-share.svg" alt="Share"></a>
+            <a id="reply" href=""><img src="./assets/images/forum-reply.svg" alt="Reply"></a>
+            <a href="#">#1</a>
+          </div>
+        </div>
+        <div class="forumPost__content">
+          <p>So inspirational, thanks!</p>
+        </div>
+      </div><!-- /.forumPost -->
+      {% endfor %}
+
+    {% endfor %}
+
+    <div class="forumPost">
+      <p>Message:</p>
+    <!-- .forumPost -->
+    {% if not user.is_authenticated %}
+      <div class="forumPost__guest">
+        <p>You need logged in to write a message</p>
+        <a href="{% url 'login' %}" class="button">Login</a>
+      </div>
+    {% else %}
+      <form action="{% url 'topic' %}?topic={{ topic.category.id }}" method="post">
+        {% csrf_token %}
+        <textarea class="textarea" name="text" rows="3" required></textarea>
+        <button type="submit" class="button">Send a message</button>
+        <input type="hidden" name="topic" value="{{ topic.category.id }}">
+      </form>
+    {% endif %}
+    </div><!-- /.forumPost -->
+
+  </div><!-- /.forum -->
+
+</div>
+
+{% endblock %}
