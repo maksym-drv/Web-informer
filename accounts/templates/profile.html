@@ -2,6 +2,10 @@
 
 {% block main %}
 
+{% if alert %}
+  <script>alert("Data changed successfully")</script>
+{% endif %}
+
 <div class="container">
   <h3>Your profile:</h3>
   <form method="post">

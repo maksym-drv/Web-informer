@@ -13,6 +13,17 @@ class Profile(View):
 
         return render(request, 'profile.html', context=context)
 
+    def post(self, request: WSGIRequest):
+        context = {}
+        form = SignUpForm(request.POST, instance=request.user)
+        
+        if form.is_valid():
+            form.save()
+            context['alert'] = True
+            context['form'] = SignUpForm(instance=request.user)
+            return render(request, 'profile.html', context=context)
+
+
 class Sign_up(CreateView):
     form_class = SignUpForm
     success_url = reverse_lazy('login')
