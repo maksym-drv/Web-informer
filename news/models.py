@@ -16,8 +16,11 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = "News"
 
-class Comments(models.Model):
+class Comment(models.Model):
     text        = models.TextField("Comment text", null=False)
     sended_from = models.ForeignKey(CustomUser , on_delete = models.CASCADE)
     news        = models.ForeignKey(News , on_delete = models.CASCADE)
     time        = models.DateTimeField("Date/time", auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.text

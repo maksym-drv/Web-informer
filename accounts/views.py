@@ -1,6 +1,4 @@
 from .forms import SignUpForm
-from django.shortcuts import render
-from django.views import View
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
@@ -10,5 +8,5 @@ from django.views.generic import CreateView
 
 class Sign_up(CreateView):
     form_class = SignUpForm
-    success_url = reverse_lazy('news')
+    success_url = reverse_lazy('login')
     template_name = "sign_up.html"

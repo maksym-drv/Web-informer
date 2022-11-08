@@ -12,11 +12,11 @@
     <div class="newsItem">
       <div class="newsItem__inner">
         <div class="newsItem__imgbox">
-          <a href="news-post.html"><img src="{{ data.image.url }}" alt="News"></a>
+          <a href="{% url 'post' %}?news-post={{ data.id }}"><img src="{{ data.image.url }}" alt="News"></a>
         </div>
         <div class="newsItem__content">
           <div class="newsItem__title">
-            <a href="news-post.html">{{ data.title }}</a>
+            <a href="{% url 'post' %}?news-post={{ data.id }}">{{ data.title }}</a>
           </div>
           <p class="newsItem__desc">
             {{ data.pre_text }}
