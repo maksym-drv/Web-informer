@@ -22,7 +22,7 @@
     {% for message in messages %}
 
     <!-- .forumPost -->
-    <div class="forumPost" id="{{ message.id }}">
+    <div class="forumPost" id="message_{{ message.id }}">
       <div class="forumPost__panel">
         <div class="forumPost__panel__inner">
 
@@ -36,41 +36,91 @@
         </div>
         <div class="forumPost__panel__inner">
           <span>{{ message.time }}</span>
-          <a onclick="copyUrl('{{ request.build_absolute_uri }}#{{ message.id }}', '{{ message.id }}')" href="#"><img src="{% static 'images/forum-share.svg' %}" alt="Share"></a>
-          <a href="#"><img src="{% static 'images/forum-reply.svg' %}" alt="Reply"></a>
-          <a href="#">#{{ message.id }}</a>
+          <a onclick="copyUrl('{{ request.build_absolute_uri }}#message_{{ message.id }}', '{{ message.id }}', 'message')" role="button"><img src="{% static 'images/forum-share.svg' %}" alt="Share"></a>
+          <a onclick="replyMessage('message_{{ message.id }}')" role="button"><img src="{% static 'images/forum-reply.svg' %}" alt="Reply"></a>
+          <a href="">#{{ message.id }}</a>
         </div>
       </div>
       <div class="forumPost__content">
         <p>{{ message.text }}</p>
       </div>
+      
+      <span class="forumPost__reply--message" style="display: none;">
+        <p><b>Reply to message:</b></p>
+        <!-- .forumPost -->
+        {% if not user.is_authenticated %}
+          <div class="forumPost__guest">
+            <p>You need logged in to reply to message</p>
+            <a href="{% url 'login' %}" class="button">Login</a>
+          </div>
+        {% else %}
+          <form action="{% url 'topic' %}?topic={{ topic.category.id }}" method="post">
+            {% csrf_token %}
+            <textarea class="textarea" name="text" rows="3" required></textarea>
+            <button type="submit" class="button">Send a message</button>
+            <input type="hidden" name="topic" value="{{ topic.category.id }}">
+            <input type="hidden" name="type" value="reply">
+            <input type="hidden" name="reply_to" value="{{ message.id }}">
+            <input type="hidden" name="sended_to" value="{{ message.sended_from.id }}">
+          </form>
+        {% endif %}
+      </span>
+
     </div><!-- /.forumPost -->
 
-      {% for reply in message.reply_set.get %}
+      {% for reply in message.reply_set.all %}
       <!-- .forumPost__tree -->
-      <div class="forumPost forumPost__tree">
+      <div class="forumPost forumPost__tree" id="reply_{{ reply.id }}">
         <div class="forumPost__panel">
           <div class="forumPost__panel__inner">
-            <span class="forumPost__ava"><img src="img/ava-1.png" alt="#"></span>
-            <a href="#">@riffdick</a>
+            
+            {% if reply.sended_from.image %}
+            <span class="forumPost__ava"><img src="{{ reply.sended_from.image.url }}" alt="#"></span>
+            {% else %}
+            <span class="forumPost__ava"><img src="{% static 'images/defaultUser.png' %}" alt="#"></span>
+            {% endif %}
+
+            <a href="mailto:{{ reply.sended_from.email }}">{{ reply.sended_from.first_name }}</a>
           </div>
           <div class="forumPost__panel__inner">
             <span>{{ reply.time }}</span>
-            <a id="share" href=""><img src="./assets/images/forum-share.svg" alt="Share"></a>
-            <a id="reply" href=""><img src="./assets/images/forum-reply.svg" alt="Reply"></a>
-            <a href="#">#1</a>
+            <a onclick="copyUrl('{{ request.build_absolute_uri }}#reply_{{ reply.id }}', '{{ reply.id }}', 'reply')" role="button"><img src="{% static 'images/forum-share.svg' %}" alt="Share"></a>
+            <a onclick="replyMessage('reply_{{ reply.id }}')" role="button"><img src="{% static 'images/forum-reply.svg' %}" alt="Reply"></a>
+            <a href="#">#{{ reply.id }}</a>
           </div>
         </div>
         <div class="forumPost__content">
-          <p>So inspirational, thanks!</p>
+          <p><a href="mailto:">{{ reply.receiver.user.first_name }}</a>, {{ reply.text }}</p>
         </div>
+        
+        <span class="forumPost__reply--message" style="display: none;">
+          <p><b>Reply to message:</b></p>
+          <!-- .forumPost -->
+          {% if not user.is_authenticated %}
+            <div class="forumPost__guest">
+              <p>You need logged in to reply to message</p>
+              <a href="{% url 'login' %}" class="button">Login</a>
+            </div>
+          {% else %}
+            <form action="{% url 'topic' %}?topic={{ topic.category.id }}" method="post">
+              {% csrf_token %}
+              <textarea class="textarea" name="text" rows="3" required></textarea>
+              <button type="submit" class="button">Send a message</button>
+              <input type="hidden" name="topic" value="{{ topic.category.id }}">
+              <input type="hidden" name="type" value="reply">
+              <input type="hidden" name="reply_to" value="{{ message.id }}">
+              <input type="hidden" name="sended_to" value="{{ reply.sended_from.id }}">
+            </form>
+          {% endif %}
+        </span>
+
       </div><!-- /.forumPost -->
       {% endfor %}
 
     {% endfor %}
 
     <div class="forumPost">
-      <p>Message:</p>
+      <p><b>Message:</b></p>
     <!-- .forumPost -->
     {% if not user.is_authenticated %}
       <div class="forumPost__guest">
@@ -83,6 +133,7 @@
         <textarea class="textarea" name="text" rows="3" required></textarea>
         <button type="submit" class="button">Send a message</button>
         <input type="hidden" name="topic" value="{{ topic.category.id }}">
+        <input type="hidden" name="type" value="message">
       </form>
     {% endif %}
     </div><!-- /.forumPost -->

@@ -1,6 +1,6 @@
 from django.views import View
 from django.shortcuts import render
-from .models import Topic, Category, Message, CustomUser
+from .models import Topic, Category, Message, CustomUser, Reply, Receiver
 from django.core.handlers.wsgi import WSGIRequest
 
 class Topics(View):
@@ -21,12 +21,25 @@ class Topic_view(View):
         context = {}
 
         if request.user.is_authenticated:
-            new_comment = Message(
-                text        = request.POST.get('text'),
-                sended_from = CustomUser.objects.get(id = request.user.id),
-                topic       = Topic.objects.get(id=request.POST.get('topic')),
-            )
-            new_comment.save()
+            if not request.POST.get('reply_to'):
+                new_message = Message(
+                    text        = request.POST.get('text'),
+                    sended_from = CustomUser.objects.get(id = request.user.id),
+                    topic       = Topic.objects.get(id=request.POST.get('topic')),
+                )
+                new_message.save()
+            else:
+                new_reply = Reply(
+                    text        = request.POST.get('text'),
+                    sended_from = CustomUser.objects.get(id = request.user.id),
+                    reply_to    = Message.objects.get(id=request.POST.get('reply_to')),
+                )
+                new_reply.save()
+                new_sended_to = Receiver(
+                    reply   = new_reply,
+                    user    = CustomUser.objects.get(id=request.POST.get('sended_to'))
+                )
+                new_sended_to.save()
 
         context['topic'] = Topic.objects.filter(id=request.POST.get('topic')).first()
         context['messages'] =  Message.objects.filter(topic_id=context['topic'])

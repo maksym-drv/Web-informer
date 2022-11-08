@@ -31,7 +31,7 @@ class Reply(models.Model):
     class Meta:
         verbose_name_plural = "Replies"
 
-class Sended_to(models.Model):
-    reply   = models.OneToOneField(Reply, on_delete = models.CASCADE)
-    user            = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
-    is_read         = models.BooleanField(null=False, default=False)
+class Receiver(models.Model):
+    reply       = models.OneToOneField(Reply, on_delete = models.CASCADE)
+    user        = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
+    is_read     = models.BooleanField(null=False, default=False)
