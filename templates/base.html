@@ -42,8 +42,13 @@
               <li><a href="curses.html" class="nav__link">Обучение</a></li>
               <li><a href="slovar.html" class="nav__link">Словарь</a></li>
               <li><a href="sell.html" class="nav__link">Продажа аккаунтов</a></li>
-              <li><a href="#" class="button">Наш чат в Telegram</a></li>
-              <li><a href="#" class="nav__link hidden__desktop">Войти</a></li>
+              
+              {% if is_authenticated %}
+                <li><a href="{% url 'profile' %}" class="button">Profile</a></li>
+              {% else %}
+                <li><a href="{% url 'login' %}" class="nav__link hidden__desktop">Login</a></li>
+              {% endif %}
+
             </ul>
           </nav><!-- /.nav -->
         </div><!-- /.header__box -->
@@ -107,9 +112,6 @@
           <a href="{% url 'login' %}" class="nav__link hidden__mobile">Login</a>
 
           {% endif %}
-
-
-          
 
           <!-- .nav__open -->
           <button id="nav__open" type="button" class="navToggle">

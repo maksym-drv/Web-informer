@@ -1,5 +1,3 @@
-from email.policy import default
-from enum import unique
 from django.db import models
 from accounts.models import CustomUser
 from categories.models import Categories
@@ -31,6 +29,6 @@ class Reply(models.Model):
         verbose_name_plural = "Replies"
 
 class Sended_to(models.Model):
-    message_reply   = models.ForeignKey(Reply, on_delete = models.CASCADE)
+    reply   = models.OneToOneField(Reply, on_delete = models.CASCADE)
     user            = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
     is_read         = models.BooleanField(null=False, default=False)
