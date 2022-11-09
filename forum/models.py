@@ -6,8 +6,6 @@ class Topic(models.Model):
     title       = models.CharField("Title", max_length=70, null=False)
     description = models.CharField("Pre-text", max_length=300, null=True)
     text        = models.TextField("Full-text", null=False)
-    date        = models.DateField("Date", auto_now_add=True)
-    image       = models.ImageField("Image", null=False)
     category    = models.ForeignKey(Category, on_delete = models.CASCADE)
 
     def __str__(self) -> str:
@@ -18,6 +16,9 @@ class Message(models.Model):
     sended_from = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
     topic       = models.ForeignKey(Topic, on_delete = models.CASCADE)
     time        = models.DateTimeField("Date/time", auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.text
 
 class Reply(models.Model):
     text        = models.TextField("Comment text", null=False)

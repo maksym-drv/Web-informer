@@ -21,11 +21,16 @@ function copyUrl(url, id, type) {
 
 function replyMessage(id) {
   var reply_box = document.getElementById(id).getElementsByClassName('forumPost__reply--message')[0];
-  if (reply_box.style.display == "block") { 
-    var replies = document.getElementsByClassName("forumPost__reply--message");
-    for(var i = 0; i < replies.length; i++){
+  var replies = document.getElementsByClassName("forumPost__reply--message");
+
+  for(var i = 0; i < replies.length; i++){
+    if (replies[i] !== reply_box){
       replies[i].style.display = "none";
     }
+  }
+
+  if (reply_box.style.display == "block") { 
+    reply_box.style.display = "none"
   } else {
     reply_box.style.display = "block";
   }

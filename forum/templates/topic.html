@@ -19,6 +19,14 @@
       <a href="{% url 'categories' %}">Categories</a> / <a href="{% url 'topics' %}?category={{ topic.category.id }}">{{ topic.category.name }}</a> / {{ topic.title }}
     </div><!-- /.forumBreadcrumb -->
 
+    <!-- .newsPost__inner -->
+    <div class="newsPost__inner">
+      <h1 class="newsPost__title h2">{{ topic.title }}</h1>
+      <p>
+        {{ topic.text }}
+      </p>
+    </div><!-- /.newsPost__inner -->
+
     {% for message in messages %}
 
     <!-- .forumPost -->
