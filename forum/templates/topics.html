@@ -22,7 +22,7 @@
         <img src="{% static 'images/message.svg' %}" alt="#">
       </span>
       <div class="forumItem__desc">
-        <div class="forumItem__desc__name"><a href="{% url 'topic' %}?topic={{ category.id }}">{{ topic.title }}</a></div>
+        <div class="forumItem__desc__name"><a href="{% url 'topic' %}?topic={{ topic.id }}">{{ topic.title }}</a></div>
         <div class="forumItem__desc__text">{{ topic.description }}</div>
       </div>
       <div class="forumItem__counters">

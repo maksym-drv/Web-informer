@@ -54,11 +54,11 @@
             <a href="{% url 'login' %}" class="button">Login</a>
           </div>
         {% else %}
-          <form action="{% url 'topic' %}?topic={{ topic.category.id }}" method="post">
+          <form action="{% url 'topic' %}?topic={{ topic.id }}" method="post">
             {% csrf_token %}
             <textarea class="textarea" name="text" rows="3" required></textarea>
             <button type="submit" class="button">Send a message</button>
-            <input type="hidden" name="topic" value="{{ topic.category.id }}">
+            <input type="hidden" name="topic" value="{{ topic.id }}">
             <input type="hidden" name="type" value="reply">
             <input type="hidden" name="reply_to" value="{{ message.id }}">
             <input type="hidden" name="sended_to" value="{{ message.sended_from.id }}">
@@ -102,11 +102,11 @@
               <a href="{% url 'login' %}" class="button">Login</a>
             </div>
           {% else %}
-            <form action="{% url 'topic' %}?topic={{ topic.category.id }}" method="post">
+            <form action="{% url 'topic' %}?topic={{ topic.id }}" method="post">
               {% csrf_token %}
               <textarea class="textarea" name="text" rows="3" required></textarea>
               <button type="submit" class="button">Send a message</button>
-              <input type="hidden" name="topic" value="{{ topic.category.id }}">
+              <input type="hidden" name="topic" value="{{ topic.id }}">
               <input type="hidden" name="type" value="reply">
               <input type="hidden" name="reply_to" value="{{ message.id }}">
               <input type="hidden" name="sended_to" value="{{ reply.sended_from.id }}">
@@ -128,11 +128,11 @@
         <a href="{% url 'login' %}" class="button">Login</a>
       </div>
     {% else %}
-      <form action="{% url 'topic' %}?topic={{ topic.category.id }}" method="post">
+      <form action="{% url 'topic' %}?topic={{ topic.id }}" method="post">
         {% csrf_token %}
         <textarea class="textarea" name="text" rows="3" required></textarea>
         <button type="submit" class="button">Send a message</button>
-        <input type="hidden" name="topic" value="{{ topic.category.id }}">
+        <input type="hidden" name="topic" value="{{ topic.id }}">
         <input type="hidden" name="type" value="message">
       </form>
     {% endif %}
