@@ -5,7 +5,7 @@ class Database:
     
     def get_messages_interval(self, user: int, start_date: datetime, end_date: datetime):
         with connection.cursor() as cursor:
-            cursor.execute('''SELECT forum_topic.id, forum_topic.title, forum_reply.time FROM forum_reply 
+            cursor.execute('''SELECT forum_topic.id, forum_topic.title, forum_reply.time, forum_reply.id FROM forum_reply 
                         INNER JOIN forum_receiver on forum_receiver.reply_id = forum_reply.id
                         INNER JOIN accounts_customuser on forum_receiver.user_id = accounts_customuser.id
                         INNER JOIN forum_message on forum_reply.reply_to_id = forum_message.id
