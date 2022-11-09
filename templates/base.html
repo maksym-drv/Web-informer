@@ -56,7 +56,9 @@
             <button class="ding__toogle dropdown-toggle" type="button" id="dropdownMenu__ding" data-bs-toggle="dropdown"
               aria-expanded="false">
               <img class="ding__icon" src="{% static 'images/bell.svg' %}" alt="Notifications">
-              <span class="ding__info">{{ count }}</span>
+              {% if not count == 0 %}
+                <span class="ding__info">{{ count }}</span>
+              {% endif %}
             </button>
             <!-- .ding__box -->
             <div class="dropdown-menu ding__box" aria-labelledby="dropdownMenu__ding">
