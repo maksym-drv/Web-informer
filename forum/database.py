@@ -2,9 +2,7 @@ from django.db import connection
 from datetime import datetime
 
 class Database:
-
-    conn = connection
-
+    
     def get_messages_interval(self, user: int, start_date: datetime, end_date: datetime):
         with connection.cursor() as cursor:
             cursor.execute('''SELECT forum_topic.id, forum_topic.title, forum_reply.time FROM forum_reply 
