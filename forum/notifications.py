@@ -18,8 +18,6 @@ def get_notifications(request: WSGIRequest):
 
     today       = [{"id": data[0], "name": data[1], "time": data[2], "reply": data[3]} 
         for data in db.get_messages_interval(user_id, today, tomorrow)]
-
-    print(today)
     
     context = {
         'count': count,
