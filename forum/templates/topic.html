@@ -98,7 +98,7 @@
           </div>
         </div>
         <div class="forumPost__content">
-          <p><a href="mailto:">{{ reply.receiver.user.first_name }}</a>, {{ reply.text }}</p>
+          <p><a href="mailto:{{ reply.receiver.user.email }}">{{ reply.receiver.user.first_name }}</a>, {{ reply.text }}</p>
         </div>
         
         <span class="forumPost__reply--message" style="display: none;">
