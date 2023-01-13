@@ -1,1 +1,1 @@
-# Ukraine_web-informer
+# Web-informer
