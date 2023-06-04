@@ -4,7 +4,7 @@ services:
   web:
     image: informer_app
     build: .
-    command: gunicorn Ukraine_web_informer.wsgi:application --bind 0.0.0.0:8000 --timeout 200
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000 --timeout 200
     volumes:
       - .:/informer_app
       - static:/staticfiles/
@@ -12,15 +12,15 @@ services:
     expose:
       - 8000
     env_file:
-    - ./.env.dev
+    - ./.dev.env
     depends_on:
       - db
   db:
-    image: postgres:14.0-alpine
+    image: postgres:14.7-alpine
     volumes:
       - postgres:/var/lib/postgresql/data/
     env_file:
-      - ./.env.db.dev
+      - ./.db.env
     ports:
      - "5432:5432"
   nginx:
